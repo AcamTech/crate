@@ -18,6 +18,10 @@ Breaking Changes
 Changes
 =======
 
+- Added support for the full PostgreSQL syntax of the ``BEGIN`` statement in
+  order to support the lib/pq Golang driver. The ``BEGIN`` statement and any of
+  its parameters are ignored.
+
 - Added a new ``Connections`` MBean for JMX which exposes the number of open
   connections per protocol.
 
