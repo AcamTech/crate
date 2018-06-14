@@ -267,6 +267,11 @@ CPU
   Docker, the number of processors may be guessed incorrectly. If this happens,
   you can manually configure the number of processors using this setting.
 
+  You can also use this setting to manually constrain the number of CPUs made
+  available to CrateDB. You might want to do this if you're running CrateDB in
+  a multitenant setup (i.e. more than one CrateDB node running on the same
+  hardware).
+
 Memory
 ======
 
