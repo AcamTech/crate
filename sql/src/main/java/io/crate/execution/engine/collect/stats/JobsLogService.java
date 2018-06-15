@@ -378,7 +378,7 @@ public class JobsLogService extends AbstractLifecycleComponent implements Provid
          * Settings need to be available in the SQLPlugin which is created *before* components like {@link Functions}.
          * But {@link Functions} is required to do the validation.
          */
-        Consumer<String> validate = s -> { };
+        Consumer<String> validate = s -> {};
 
         @Override
         public void validate(String value, Map<Setting<String>, String> settings) {
