@@ -1015,45 +1015,42 @@ Jobs, Operations, and Logs
 
 To let you inspect the activities currently taking place in a cluster, CrateDB
 provides system tables that let you track current cluster jobs and operations.
-See :ref:`Jobs Table <sys-jobs>` and :ref:`Operations Table<sys-operations>`
+See :ref:`Jobs Table <sys-jobs>` and :ref:`Operations Table<sys-operations>`.
 
 Jobs and operations that finished executing are additionally recorded in
 memory. There are two retention policies available to control how many records
 should be kept.
 
 One option is to configure the maximum number of records which should be kept.
-Once the configured table size is reached the older log records are deleted as
-newer records are added. This is configurable using :ref:`Jobs Log Size
-<stats.jobs_log_size>` and :ref:`Operations Log Size
+Once the configured table size is reached, the older log records are deleted as
+newer records are added. This is configurable using :ref:`stats.jobs_log_size
+<stats.jobs_log_size>` and :ref:`stats.operations_log_size
 <stats.operations_log_size>`. 
 
 Another option is to configure an expiration time for the records. In this
 case, the records in the logs tables are periodically cleared if they are older
 than the expiry time. This behaviour is configurable using
-:ref:`Jobs Log Expiration <stats.jobs_log_expiration>` and
-:ref:`Operations Log Expiration <stats.operations_log_expiration>`.
+:ref:`stats.jobs_log_expiration <stats.jobs_log_expiration>` and
+:ref:`stats.operations_log_expiration <stats.operations_log_expiration>`.
 
-
-In addition to these retention policies there is a memory limit in place
-preventing these tables from taking up too much memory.
-The amount of memory that can be used to store the jobs can be configured
-using :ref:`Jobs Log Circuit Breaker <stats.breaker.log.jobs.limit>` and
-:ref:`Operations Log Circuit Breaker <stats.breaker.log.operations.limit>`.
+In addition to these retention policies, there is a memory limit in place
+preventing these tables from taking up too much memory. The amount of memory
+that can be used to store the jobs can be configured using
+:ref:`stats.breaker.log.jobs.limit <stats.breaker.log.jobs.limit>` and
+:ref:`stats.breaker.log.operations.limit <stats.breaker.log.operations.limit>`.
 If the memory limit is reached, an error message will be logged and the log
 table will be cleared completely.
 
-
 It is also possible to define a filter which must match in order for jobs to be
-recorded after they finished executing.
-This can be useful to only record slow queries or queries that failed due to an
-error.
-This filter can be configured using the :ref:`Jobs Log Filter
-<stats.jobs_log_filter>` setting.
+recorded after they finished executing. This can be useful to only record slow
+queries or queries that failed due to an error. This filter can be configured
+using the :ref:`stats.jobs_log_filer <stats.jobs_log_filter>` setting.
 
 Furthermore, there is a second filter setting which also results in a log entry
-for all finished jobs that match this filter. This can be configured using
-:ref:`Persistent Jobs Log Filter <stats.jobs_log_persistent_filter>`. 
-This could be used to create a persistent slow query log.
+in the regular CrateDB log file for all finished jobs that match this filter.
+This can be configured using :ref:`stats.jobs_log_persistent_filter
+<stats.jobs_log_persistent_filter>`. This could be used to create a persistent
+slow query log.
 
 
 .. _sys-jobs:
